@@ -5,11 +5,11 @@ Emulate a Kanban style application
 React application that will use API data to populate user-facing UI.
 
 # Stack / Technologies
-Bootstrap
-NodeJS
-Express
-Ngrok
-React Native
+Bootstrap<br/>
+NodeJS<br/>
+Express<br/>
+Ngrok<br/>
+React Native<br/>
 
 # Later stack technologies
 Database: options -> MySQL (MariaDB w/ phpmyadmin), Mongodb
