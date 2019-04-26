@@ -1,44 +1,172 @@
 .App {
-  text-align: center;
 }
 
-@import url('https://fonts.googleapis.com/css?family=VT323');
+/*
+Bootstrap import
+*/
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
+@import url("https://fonts.googleapis.com/css?family=VT323");
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 
 * {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
+}
+
+.container-fluid {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 10s linear;
-  height: 1%;
+  height: 10%;
   width: 10%;
   pointer-events: none;
 }
 
 .App-header {
   background-color: #282c34;
-  border-style:solid;
-  border-color:white;
-  border-width: 10px;
+  opacity: 0.9;
   height: 15vh;
-  padding-left:5%;
-  display: flex;
-  flex-direction: column;
+  padding: 3%;
+  text-align: center;
+  position: relative;
+  padding-top: 2%;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.kanban-cards-style {
+  opacity: .9 !important;
+  background-color:#282c34;
+  padding-top: 2%;
+  padding-bottom:5%;
+  color:white;
+
+}
+
+.kanban-border {
+  opacity: 0.5;
+  height: 5vh;
+  background-color: #282c34;
+}
+
+.kanban-bottom {
+  opacity: .7;
+  color:white;
+  text-align: center;
+  font-size: 30px;
+  height: 10vh;
+  background-color: #282c34;
+}
+
+.kanban-card-comment-field {
+  resize: none;
+}
+
+.card-title {
+  text-align:center;
+  font-size: 30px;
+}
+
+.card-description {
+  text-align: justify;
+}
+
+textarea {
+  border-radius: 3px;
+}
+
+.comment-submit {
+  text-align:center;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: slategrey;
+  border-width: 1px;
+  padding-top:5px;
+  margin-top:10px;
+  margin-left: 5px;
+}
+
+.test {
+  text-align: center;
+}
+
+.comments {
+  border-radius: 3px;
+  text-align: justify;
+  padding:20px;
+  margin-top:20px;
+  border-style: solid;
+  border-color: slategrey;
+  border-width: 1px;
+  opacity: 1 !important;
+  background-color: #282c34 !important;
+  height: unset;
+}
+
+.comments-style {
+  padding-bottom: 20px;
+}
+
+
+.kanban-card {
+  padding:20px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: slategrey;
+  border-width: 1px;
+  opacity: 1 !important;
+  background-color: #282c34 !important;
+  height: unset;
+  margin: 10px;
+}
+
+.nav-style {
+  border-radius: 0px;
+}
+
+hr {
+  background-color: slategray;
+
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-manipulate {
+  text-align: center;
+  padding:20px;
+}
+
+.comment-manipulate {
+
+  text-align: end;
+  padding: 10px;
+  padding-left:10px;
+  padding-bottom:0px;
+}
+
+.btn {
+  color: white !important;
+}
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 0 100%; }
+}
+
+.kanban {
+  background-color: #282c34;
+  height: 40vmax;
+}
+
+#animate-area	{
+  background-image: url("./static-content/bg.jpg");
+	background-position: 0px 0px;
+	background-repeat: repeat-y;
+	animation: animatedBackground 100s linear infinite;
 }
