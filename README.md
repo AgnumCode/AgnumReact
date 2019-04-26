@@ -1,5 +1,5 @@
 # Project goal (current)
-Emulate a Kanban style application 
+Emulate a Kanban style application (e.g Trello)
 
 # AgnumReact
 React application that will use API data to populate user-facing UI.
