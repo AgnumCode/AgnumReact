@@ -1,4 +1,6 @@
 .App {
+  height: 100%;
+  width: 100%;
 }
 
 /*
@@ -13,8 +15,21 @@ Bootstrap import
 }
 
 .container-fluid {
+
   margin: 0px !important;
   padding: 0px !important;
+}
+
+.commentButtonGroup {
+  text-align: center;
+  display: inline-flex;
+  width: auto;
+  height: auto;
+}
+
+.noComment {
+  padding-top: inherit;
+  text-align: center;
 }
 
 .App-logo {
@@ -25,32 +40,32 @@ Bootstrap import
 }
 
 .App-header {
-  background-color: #282c34;
-  opacity: 0.9;
-  height: 15vh;
-  padding: 3%;
+  background-color: #1B1522;
+  opacity: 1;
   text-align: center;
-  position: relative;
   padding-top: 2%;
-  align-items: flex-start;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
+  height: 15vh;
+  font-size: calc(30px + 2vmin);
   color: white;
 }
 
 .kanban-cards-style {
   opacity: .9 !important;
-  background-color:#282c34;
+  background-color:none;
   padding-top: 2%;
   padding-bottom:5%;
   color:white;
 
 }
 
+.scrollable {
+  flex-wrap: none;
+}
+
 .kanban-border {
-  opacity: 0.5;
-  height: 5vh;
-  background-color: #282c34;
+  opacity: 0.7;
+  height: 10vh;
+  background-color: #1B1522;
 }
 
 .kanban-bottom {
@@ -59,10 +74,11 @@ Bootstrap import
   text-align: center;
   font-size: 30px;
   height: 10vh;
-  background-color: #282c34;
+  background-color: #1B1522;
 }
 
 .kanban-card-comment-field {
+  text-align: center;
   resize: none;
 }
 
@@ -77,6 +93,10 @@ Bootstrap import
 
 textarea {
   border-radius: 3px;
+  resize : none;
+  outline: none;
+  opacity: 1 !important;
+  width: 100%;
 }
 
 .comment-submit {
@@ -86,12 +106,9 @@ textarea {
   border-color: slategrey;
   border-width: 1px;
   padding-top:5px;
+  width: max-content;
   margin-top:10px;
   margin-left: 5px;
-}
-
-.test {
-  text-align: center;
 }
 
 .comments {
@@ -103,7 +120,7 @@ textarea {
   border-color: slategrey;
   border-width: 1px;
   opacity: 1 !important;
-  background-color: #282c34 !important;
+  background-color: #1B1522 !important;
   height: unset;
 }
 
@@ -111,6 +128,12 @@ textarea {
   padding-bottom: 20px;
 }
 
+.boardText {
+  color: white;
+  font-size: calc(30px + 2vmin);
+
+
+}
 
 .kanban-card {
   padding:20px;
@@ -119,8 +142,9 @@ textarea {
   border-color: slategrey;
   border-width: 1px;
   opacity: 1 !important;
-  background-color: #282c34 !important;
-  height: unset;
+  background-color: #1B1522 !important;
+  height: auto;
+  width: auto;
   margin: 10px;
 }
 
@@ -130,6 +154,8 @@ textarea {
 
 hr {
   background-color: slategray;
+  opacity: 0.3;
+  width: inherit;
 
 }
 
@@ -155,18 +181,20 @@ hr {
 }
 
 @keyframes animatedBackground {
-	from { background-position: 0 0; }
-	to { background-position: 0 100%; }
+	from { background-position: 0 100% }
+  to { background-position: 100% 0; }
+
 }
 
 .kanban {
-  background-color: #282c34;
+  background-color: #1B1522;
   height: 40vmax;
+  width: max-content;
 }
 
 #animate-area	{
-  background-image: url("./static-content/bg.jpg");
-	background-position: 0px 0px;
-	background-repeat: repeat-y;
-	animation: animatedBackground 100s linear infinite;
+  background-image: url("./static-content/bg.png");
+	background-position: 200px, 200px;
+  animation: animatedBackground 200s linear infinite;
+
 }
