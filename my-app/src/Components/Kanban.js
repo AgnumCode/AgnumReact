@@ -7,25 +7,28 @@ const uuidv4 = require('uuid/v4');
 export class Kanban extends Component {
 
   state = {
-    board: "Development Sprint Apr/21",
+    board: "Eric's Sprint #12313",
     cards: [
       {
         id: uuidv4(),
         description: text.description1(),
         title: text.title1(),
+        author: "Adam G.",
         status: 'development',
+        score: 20,
         comments: [
           {
             id: uuidv4(),
             name: "Phil",
             date: new Date().toLocaleDateString(),
             text: "exciting new information",
-            score: -2,
+            score: 0,
             subthreads: [
               {
                 id: 302,
                 name: "Lerry",
-                text: "I don't know"
+                text: "I don't know",
+                score: 0
               }
             ]
           },
@@ -43,7 +46,9 @@ export class Kanban extends Component {
         id: uuidv4(),
         description: text.description2(),
         title: text.title2(),
+        author: "Greg O.",
         status: 'development',
+        score: 10,
         comments: [
           {
             id: uuidv4(),
@@ -59,7 +64,9 @@ export class Kanban extends Component {
         id: uuidv4(),
         description: text.description3(),
         title: text.title3(),
+        author: "Stephen L.",
         status: 'development',
+        score: 1,
         comments: [
           {
             id: NaN,
@@ -75,7 +82,9 @@ export class Kanban extends Component {
         id: uuidv4(),
         description: text.description4(),
         title: text.title4(),
+        author: "Laser M.",
         status: 'development',
+        score: 0,
         comments: [
           {
             id: NaN,
@@ -91,7 +100,9 @@ export class Kanban extends Component {
         id: uuidv4(),
         description: "Extra",
         title: "text.title4()",
+        author: "Nino K.",
         status: 'development',
+        score: 12,
         comments: [
           {
             id: NaN,
@@ -102,22 +113,44 @@ export class Kanban extends Component {
             subthreads: []
           }
         ],
+      },
+      {
+        id: uuidv4(),
+        description: text.description2(),
+        title: text.title2(),
+        status: 'development',
+        author: "Kayle L.",
+        score: 20,
+        comments: [
+          {
+            id: uuidv4(),
+            name: "Pell",
+            date: new Date().toLocaleDateString(),
+            text: "needs more work",
+            score: 0,
+            subthreads: []
+          }
+        ]
       }
     ]
   };
+
 
   render() {
     return (
       <div id="animate-area" className="App">
         <header className="App-header">
           AgnumCode = () => Kanban
-      </header>
+        </header>
         <div className="fluid-container kanban-border">
           <div className="row" />
+
         </div>
         <div className="fluid-container">
           <div className="row" />&nbsp;
+
         </div>
+
         <div className="container-fluid">
           <div className="row justify-content-center">
             <p className="boardText">
@@ -126,26 +159,24 @@ export class Kanban extends Component {
           </div>
           <div className="row justify-content-center">
             <nav className="navbar navbar-expand-lg nav-style">
-
+              &nbsp;&nbsp;
               <button className="btn btn-info-outline btn-lg" type="button">
-                &nbsp;&nbsp;
-          <i className="far fa-plus-square" /> &nbsp;&nbsp;ADD CARD
+
+                <i className="far fa-plus-square" /> &nbsp;&nbsp;ADD CARD
         </button>
               <button className="btn btn-info-outline btn-lg" type="button">
-                &nbsp;&nbsp;
+
                 <i class="fas fa-exchange-alt"></i> &nbsp;&nbsp;CHANGE BOARD
         </button>
-              <button className="btn btn-info-outline btn-lg" type="button">
-                <i className="fas fa-search" />
-                &nbsp;&nbsp;FIND BY TAG
-        </button>
+
               <button className="btn btn-info-outline btn-lg" type="button">
                 <i className="fas fa-question" />
                 &nbsp;&nbsp;MAINTAINER
         </button>
-
+              &nbsp;&nbsp;
+        <form id="searchExpand">
+                <input type="search" /><i class="fas fa-chevron-down" /><span className="searchText"></span></form>
             </nav>
-
           </div>
         </div>
         <div className="row justify-content-center kanban-cards-style">
@@ -153,7 +184,7 @@ export class Kanban extends Component {
           <KanbanCard key={this.state.cards.id} kanbancard={this.state.cards} />
         </div>
         <div className="container-fluid">
-          <div className="kanban-bottom row">
+          <div className="kanban-bottom-2 row">
             <div className="col align-self-center">Created by Eric Agocs</div>
           </div>
         </div>

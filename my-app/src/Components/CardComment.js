@@ -27,13 +27,19 @@ export class CardComment extends Component {
           <p className="card-description">
             {comment.text}
           </p>
+
           <div className="comment-manipulate">
-            <button className="btn btn-sm btn-default">
-              Delete comment&nbsp;&nbsp;
+          <button className="btn btn-md btn-default">
+          <i className="far fa-thumbs-up" />
+          &nbsp;
+              LIKE  {comment.score}
+            </button>
+            <button className="btn btn-md btn-default">
+              DELETE&nbsp;&nbsp;
      <i className="fas fa-trash" />
             </button>
-            <button className="btn btn-sm btn-default">
-              Edit comment&nbsp;&nbsp;
+            <button className="btn btn-md btn-default">
+              EDIT &nbsp;&nbsp;
      <i className="far fa-edit" />
             </button>
           </div>

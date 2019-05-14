@@ -9,13 +9,14 @@ Bootstrap import
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css");
 @import url("https://fonts.googleapis.com/css?family=VT323");
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
+@import url("https://code.jquery.com/jquery-1.11.1.min.js");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js");
 
 * {
   font-family: "VT323", monospace;
 }
 
 .container-fluid {
-
   margin: 0px !important;
   padding: 0px !important;
 }
@@ -27,8 +28,95 @@ Bootstrap import
   height: auto;
 }
 
+#searchExpand input[type="search"] {
+  width: 15px;
+  padding-left: 10px;
+  color: transparent;
+  cursor: pointer;
+}
+#searchExpand input[type="search"]:hover {
+  background-color: #fff;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.searchText {
+  font-size: 1.5rem;
+  color: white;
+}
+
+input[type="search"] {
+  background: white
+    url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat
+    9px center;
+  border: none 1px #ccc;
+  width: 35px;
+  height: 28px;
+  text-align: center;
+  padding-right: 10px;
+  color: white;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+input[type="search"]:focus {
+  width: 230px;
+  background-color: #fff;
+  border-color: #1b1522;
+
+  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+}
+
+input[type="search"]:focus {
+  width: 30px;
+  background-color: #fff;
+  padding-right: 10px;
+  border-color: #1b1522;
+
+  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+  box-shadow: 0 0 5px rgba(109, 207, 246, 0.5);
+}
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+input {
+  outline: none;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+#searchExpand input[type="search"]:focus {
+  width: 130px;
+  padding-left: 32px;
+  color: #000;
+  background-color: #fff;
+  cursor: auto;
+}
+#searchExpand input:-moz-placeholder {
+  color: transparent;
+}
+#searchExpand input::-webkit-input-placeholder {
+  color: transparent;
+}
+
 .noComment {
-  padding-top: inherit;
+  padding-top: 50px;
   text-align: center;
 }
 
@@ -40,7 +128,7 @@ Bootstrap import
 }
 
 .App-header {
-  background-color: #1B1522;
+  background-color: #1b1522;
   opacity: 1;
   text-align: center;
   padding-top: 2%;
@@ -50,12 +138,11 @@ Bootstrap import
 }
 
 .kanban-cards-style {
-  opacity: .9 !important;
-  background-color:none;
+  opacity: 0.9 !important;
+  background-color: none;
   padding-top: 2%;
-  padding-bottom:5%;
-  color:white;
-
+  padding-bottom: 5%;
+  color: white;
 }
 
 .scrollable {
@@ -65,17 +152,9 @@ Bootstrap import
 .kanban-border {
   opacity: 0.7;
   height: 10vh;
-  background-color: #1B1522;
+  background-color: #1b1522;
 }
 
-.kanban-bottom {
-  opacity: .7;
-  color:white;
-  text-align: center;
-  font-size: 30px;
-  height: 10vh;
-  background-color: #1B1522;
-}
 
 .kanban-card-comment-field {
   text-align: center;
@@ -83,7 +162,8 @@ Bootstrap import
 }
 
 .card-title {
-  text-align:center;
+  padding-top: 30px;
+  text-align: center;
   font-size: 30px;
 }
 
@@ -93,34 +173,34 @@ Bootstrap import
 
 textarea {
   border-radius: 3px;
-  resize : none;
+  resize: none;
   outline: none;
   opacity: 1 !important;
   width: 100%;
 }
 
 .comment-submit {
-  text-align:center;
+  text-align: center;
   border-style: solid;
   border-radius: 3px;
   border-color: slategrey;
   border-width: 1px;
-  padding-top:5px;
+  padding-top: 5px;
   width: max-content;
-  margin-top:10px;
+  margin-top: 10px;
   margin-left: 5px;
 }
 
 .comments {
   border-radius: 3px;
   text-align: justify;
-  padding:20px;
-  margin-top:20px;
+  padding: 20px;
+  margin-top: 20px;
   border-style: solid;
   border-color: slategrey;
   border-width: 1px;
   opacity: 1 !important;
-  background-color: #1B1522 !important;
+  background-color: #1b1522 !important;
   height: unset;
 }
 
@@ -130,19 +210,33 @@ textarea {
 
 .boardText {
   color: white;
-  font-size: calc(30px + 2vmin);
+  border-color: white;
+  border-style: solid;
+  padding: 10px;
+  opacity: .9;
+  border-radius: 1px;
+  border-right: 1px;
+  border-left: 1px;
+  font-size: calc(50px + 2vmin);
+}
 
-
+.kanban-bottom-2 {
+  opacity: 0.55;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  height: 20vh;
+  background-color: #1b1522;
 }
 
 .kanban-card {
-  padding:20px;
+  padding: 20px;
   border-style: solid;
   border-radius: 3px;
   border-color: slategrey;
   border-width: 1px;
   opacity: 1 !important;
-  background-color: #1B1522 !important;
+  background-color: #1b1522 !important;
   height: auto;
   width: auto;
   margin: 10px;
@@ -154,9 +248,13 @@ textarea {
 
 hr {
   background-color: slategray;
-  opacity: 0.3;
+  opacity: 0.6;
   width: inherit;
+}
 
+.btn-group-lg > .btn,
+.btn-lg {
+  font-size: 1.5rem !important;
 }
 
 .App-link {
@@ -165,15 +263,36 @@ hr {
 
 .card-manipulate {
   text-align: center;
-  padding:20px;
+  padding: 20px;
 }
 
 .comment-manipulate {
-
   text-align: end;
   padding: 10px;
-  padding-left:10px;
-  padding-bottom:0px;
+  padding-left: 10px;
+  padding-bottom: 0px;
+}
+
+.cardAuthor {
+
+  border-right: 0px;
+  border-top:0px;
+  border-left:0px;
+  font-size: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  line-height:1.25em;
+  border-bottom: 1px;
+  text-align: center;
+  border-radius: 5px;
+  border-color: slategray;
+  border-style: solid;
+}
+
+.cardAuthor:hover {
+  border-radius: 10px;
+  border-color: white;
+
 }
 
 .btn {
@@ -181,20 +300,22 @@ hr {
 }
 
 @keyframes animatedBackground {
-	from { background-position: 0 100% }
-  to { background-position: 100% 0; }
-
+  from {
+    background-position: 0 100%;
+  }
+  to {
+    background-position: 100% 0;
+  }
 }
 
 .kanban {
-  background-color: #1B1522;
+  background-color: #1b1522;
   height: 40vmax;
   width: max-content;
 }
 
-#animate-area	{
+#animate-area {
   background-image: url("./static-content/bg.png");
-	background-position: 200px, 200px;
+  background-position: 200px, 200px;
   animation: animatedBackground 200s linear infinite;
-
 }

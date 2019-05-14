@@ -9,18 +9,22 @@ export class KanbanCard extends Component {
 
   render() {
     return this.props.kanbancard.map(kanbancard => (
-      <div className="kanban-card col-3">
+      <div className="shadow p-3 mb-5 bg-white rounded kanban-card col-3">
+        <div className="cardAuthor">&nbsp; {kanbancard.author}</div>
         <div className="card-title">
           {kanbancard.title}
+          <hr />
           <div className="card-manipulate">
             <button className="btn btn-sm btn-default">
-              Edit description&nbsp;&nbsp;
+              EDIT DESCRIPTION&nbsp;&nbsp;
               <i className="far fa-edit" />
             </button>
             <button className="btn btn-sm btn-default">
-              Delete card&nbsp;&nbsp;
+              DELETE CARD&nbsp;&nbsp;
               <i className="fas fa-trash" />
             </button>
+            <button id="cardLike" type="like" className="btn btn-md btn-default">{kanbancard.score} &nbsp;<i className="far fa-thumbs-up" /></button>
+
           </div>
         </div>
         <hr />
@@ -36,8 +40,8 @@ export class KanbanCard extends Component {
         />
         <br />
         <span className="commentButtonGroup">
-          <button type="submit" className="comment-submit btn btn-md">Submit</button>
-          <button type="reset" className="comment-submit btn btn-md">Clear</button>
+          <button type="submit" className="comment-submit btn btn-md">SUBMIT</button>
+          <button type="reset" className="comment-submit btn btn-md">CLEAR</button>
         </span>
         <CardComment key={kanbancard.comments.id} comments={kanbancard.comments} />
       </div>
