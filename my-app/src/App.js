@@ -5,13 +5,13 @@ import Kanban from "./Components/Kanban";
 class App extends Component {
 
   state = {
-
+    id : 4031
   }
 
   render() {
     return (
       <span id="animate-area" className="App">
-        <Kanban />
+        <Kanban key={this.state.id}/>
       </span>
     );
   }

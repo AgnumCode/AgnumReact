@@ -2,10 +2,6 @@ import React, { Component } from "react";
 
 export class CardComment extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   handleCommentEdit() {
     //popover or modal
   }
@@ -19,8 +15,8 @@ export class CardComment extends Component {
     if (this.props.comments[0].text === "") {
       return <div className="noComment"><div>There are no comments. Be the first.</div></div>
     } else
-      return this.props.comments.map(comment => (
-        <div className="comments">
+      return this.props.comments.map((comment, key) => (
+        <div key={key} className="comments">
           <div className="comments-style">
             <u>{comment.name}</u> {comment.date}
           </div>

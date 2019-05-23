@@ -3,13 +3,9 @@ import CardComment from "./CardComment";
 
 export class KanbanCard extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    return this.props.kanbancard.map(kanbancard => (
-      <div className="shadow p-3 mb-5 bg-white rounded kanban-card col-3">
+    return this.props.kanbancard.map((kanbancard, key) => (
+      <div key={key} className="shadow p-3 mb-5 bg-white rounded kanban-card col-3">
         <div className="cardAuthor">&nbsp; {kanbancard.author}</div>
         <div className="card-title">
           {kanbancard.title}

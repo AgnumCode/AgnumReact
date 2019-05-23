@@ -6,7 +6,9 @@ const uuidv4 = require('uuid/v4');
 
 export class Kanban extends Component {
 
+
   state = {
+    id: 12309,
     board: "Eric's Sprint #12313",
     cards: [
       {
@@ -25,7 +27,7 @@ export class Kanban extends Component {
             score: 0,
             subthreads: [
               {
-                id: 302,
+                id: uuidv4(),
                 name: "Lerry",
                 text: "I don't know",
                 score: 0
@@ -69,7 +71,7 @@ export class Kanban extends Component {
         score: 1,
         comments: [
           {
-            id: NaN,
+            id: uuidv4(),
             name: "",
             date: "",
             text: "",
@@ -87,7 +89,7 @@ export class Kanban extends Component {
         score: 0,
         comments: [
           {
-            id: NaN,
+            id: uuidv4(),
             name: "",
             date: "",
             text: "",
@@ -105,7 +107,7 @@ export class Kanban extends Component {
         score: 12,
         comments: [
           {
-            id: NaN,
+            id: uuidv4(),
             name: "",
             date: "",
             text: "",
@@ -136,6 +138,30 @@ export class Kanban extends Component {
   };
 
 
+  onCardAdd = () => {
+    this.setState({
+      cards: [{
+        id: uuidv4(),
+        description: "Extra",
+        title: "text.title4()",
+        author: "Nino K.",
+        status: 'development',
+        score: Math.floor(Math.random() * 100),
+        comments: [
+          {
+            id: uuidv4(),
+            name: "",
+            date: "",
+            text: "",
+            score: 0,
+            subthreads: []
+          }
+        ],
+      }, ...this.state.cards]
+    });
+  }
+
+
   render() {
     return (
       <div id="animate-area" className="App">
@@ -160,13 +186,13 @@ export class Kanban extends Component {
           <div className="row justify-content-center">
             <nav className="navbar navbar-expand-lg nav-style">
               &nbsp;&nbsp;
-              <button className="btn btn-info-outline btn-lg" type="button">
+              <button className="btn btn-info-outline btn-lg" value={this.state} onClick={this.onCardAdd} type="button">
 
                 <i className="far fa-plus-square" /> &nbsp;&nbsp;ADD CARD
         </button>
-              <button className="btn btn-info-outline btn-lg" type="button">
+              <button className="btn btn-info-outline btn-lg" id="boardChange" type="button">
 
-                <i class="fas fa-exchange-alt"></i> &nbsp;&nbsp;CHANGE BOARD
+                <i className="fas fa-exchange-alt"></i> &nbsp;&nbsp;CHANGE BOARD
         </button>
 
               <button className="btn btn-info-outline btn-lg" type="button">
@@ -175,7 +201,7 @@ export class Kanban extends Component {
         </button>
               &nbsp;&nbsp;
         <form id="searchExpand">
-                <input type="search" /><i class="fas fa-chevron-down" /><span className="searchText"></span></form>
+                <input type="search" /><i className="fas fa-chevron-down" /><span className="searchText"></span></form>
             </nav>
           </div>
         </div>
@@ -185,7 +211,7 @@ export class Kanban extends Component {
         </div>
         <div className="container-fluid">
           <div className="kanban-bottom-2 row">
-            <div className="col align-self-center">Created by Eric Agocs</div>
+            <div className="col align-self-center">Created by Eric A.</div>
           </div>
         </div>
       </div>
