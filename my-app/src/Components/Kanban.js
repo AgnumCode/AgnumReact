@@ -7,137 +7,6 @@ const uuidv4 = require('uuid/v4');
 export class Kanban extends Component {
 
 
-  state = {
-    id: 12309,
-    board: "Eric's Sprint #12313",
-    cards: [
-      {
-        id: uuidv4(),
-        description: text.description1(),
-        title: text.title1(),
-        author: "Adam G.",
-        status: 'development',
-        score: 20,
-        comments: [
-          {
-            id: uuidv4(),
-            name: "Phil",
-            date: new Date().toLocaleDateString(),
-            text: "exciting new information",
-            score: 0,
-            subthreads: [
-              {
-                id: uuidv4(),
-                name: "Lerry",
-                text: "I don't know",
-                score: 0
-              }
-            ]
-          },
-          {
-            id: uuidv4(),
-            name: "JK",
-            date: new Date().toLocaleDateString(),
-            text: "even better information",
-            score: 3,
-            subthreads: []
-          }
-        ]
-      },
-      {
-        id: uuidv4(),
-        description: text.description2(),
-        title: text.title2(),
-        author: "Greg O.",
-        status: 'development',
-        score: 10,
-        comments: [
-          {
-            id: uuidv4(),
-            name: "Pell",
-            date: new Date().toLocaleDateString(),
-            text: "needs more work",
-            score: 0,
-            subthreads: []
-          }
-        ]
-      },
-      {
-        id: uuidv4(),
-        description: text.description3(),
-        title: text.title3(),
-        author: "Stephen L.",
-        status: 'development',
-        score: 1,
-        comments: [
-          {
-            id: uuidv4(),
-            name: "",
-            date: "",
-            text: "",
-            score: 0,
-            subthreads: []
-          }
-        ],
-      },
-      {
-        id: uuidv4(),
-        description: text.description4(),
-        title: text.title4(),
-        author: "Laser M.",
-        status: 'development',
-        score: 0,
-        comments: [
-          {
-            id: uuidv4(),
-            name: "",
-            date: "",
-            text: "",
-            score: 0,
-            subthreads: []
-          }
-        ],
-      },
-      {
-        id: uuidv4(),
-        description: "Extra",
-        title: "text.title4()",
-        author: "Nino K.",
-        status: 'development',
-        score: 12,
-        comments: [
-          {
-            id: uuidv4(),
-            name: "",
-            date: "",
-            text: "",
-            score: 0,
-            subthreads: []
-          }
-        ],
-      },
-      {
-        id: uuidv4(),
-        description: text.description2(),
-        title: text.title2(),
-        status: 'development',
-        author: "Kayle L.",
-        score: 20,
-        comments: [
-          {
-            id: uuidv4(),
-            name: "Pell",
-            date: new Date().toLocaleDateString(),
-            text: "needs more work",
-            score: 0,
-            subthreads: []
-          }
-        ]
-      }
-    ]
-  };
-
-
   onCardAdd = () => {
     this.setState({
       cards: [{
@@ -161,18 +30,30 @@ export class Kanban extends Component {
     });
   }
 
+  onCardDelete = (item) => {
+    this.state.cards.splice(item, 1);
+    this.setState({
+      cards: this.state.cards.filter(i => i !== item)
+    });
+  }
+
+  onCardLike = (key) => {
+    const cards = [...this.state.cards];
+    cards[key].score += 1;
+    this.setState({
+      cards
+    });
+  }
+
 
   render() {
     return (
       <div id="animate-area" className="App">
         <header className="App-header">
-          AgnumCode = () => Kanban
+          AgnumCode = (<i className="fas fa-cogs"></i>) => Kanban
         </header>
-        <div className="fluid-container kanban-border">
-          <div className="row" />
 
-        </div>
-        <div className="fluid-container">
+        <div className="container-fluid">
           <div className="row" />&nbsp;
 
         </div>
@@ -207,7 +88,11 @@ export class Kanban extends Component {
         </div>
         <div className="row justify-content-center kanban-cards-style">
 
-          <KanbanCard key={this.state.cards.id} kanbancard={this.state.cards} />
+          <KanbanCard
+            onCardDelete={this.onCardDelete.bind(this)}
+            onCardLike={this.onCardLike.bind(this)}
+            key={this.state.cards.id}
+            kanbancard={this.state.cards} />
         </div>
         <div className="container-fluid">
           <div className="kanban-bottom-2 row">
@@ -216,6 +101,141 @@ export class Kanban extends Component {
         </div>
       </div>
     )
+  }
+
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      id: 12309,
+      board: "Eric's Sprint #12313",
+      cards: [
+        {
+          id: uuidv4(),
+          description: text.description1(),
+          title: text.title1(),
+          author: "Adam G.",
+          status: 'development',
+          score: 20,
+          comments: [
+            {
+              id: uuidv4(),
+              name: "Phil",
+              date: new Date().toLocaleDateString(),
+              text: "exciting new information",
+              score: 0,
+              subthreads: [
+                {
+                  id: uuidv4(),
+                  name: "Lerry",
+                  text: "I don't know",
+                  score: 0
+                }
+              ]
+            },
+            {
+              id: uuidv4(),
+              name: "JK",
+              date: new Date().toLocaleDateString(),
+              text: "even better information",
+              score: 3,
+              subthreads: []
+            }
+          ]
+        },
+        {
+          id: uuidv4(),
+          description: text.description2(),
+          title: text.title2(),
+          author: "Greg O.",
+          status: 'development',
+          score: 10,
+          comments: [
+            {
+              id: uuidv4(),
+              name: "Pell",
+              date: new Date().toLocaleDateString(),
+              text: "needs more work",
+              score: 0,
+              subthreads: []
+            }
+          ]
+        },
+        {
+          id: uuidv4(),
+          description: text.description3(),
+          title: text.title3(),
+          author: "Stephen L.",
+          status: 'development',
+          score: 1,
+          comments: [
+            {
+              id: uuidv4(),
+              name: "",
+              date: "",
+              text: "",
+              score: 0,
+              subthreads: []
+            }
+          ],
+        },
+        {
+          id: uuidv4(),
+          description: text.description4(),
+          title: text.title4(),
+          author: "Laser M.",
+          status: 'development',
+          score: 0,
+          comments: [
+            {
+              id: uuidv4(),
+              name: "",
+              date: "",
+              text: "",
+              score: 0,
+              subthreads: []
+            }
+          ],
+        },
+        {
+          id: uuidv4(),
+          description: "Extra",
+          title: "text.title4()",
+          author: "Nino K.",
+          status: 'development',
+          score: 12,
+          comments: [
+            {
+              id: uuidv4(),
+              name: "",
+              date: "",
+              text: "",
+              score: 0,
+              subthreads: []
+            }
+          ],
+        },
+        {
+          id: uuidv4(),
+          description: text.description2(),
+          title: text.title2(),
+          status: 'development',
+          author: "Kayle L.",
+          score: 20,
+          comments: [
+            {
+              id: uuidv4(),
+              name: "Pell",
+              date: new Date().toLocaleDateString(),
+              text: "needs more work",
+              score: 0,
+              subthreads: []
+            }
+          ]
+        }
+      ]
+    };
   }
 }
 

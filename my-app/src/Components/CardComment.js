@@ -2,14 +2,6 @@ import React, { Component } from "react";
 
 export class CardComment extends Component {
 
-  handleCommentEdit() {
-    //popover or modal
-  }
-
-  handleCommentDelete() {
-
-  }
-
   render() {
 
     if (this.props.comments[0].text === "") {

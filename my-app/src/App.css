@@ -128,7 +128,7 @@ input::-webkit-search-cancel-button {
 }
 
 .App-header {
-  background-color: #1b1522;
+  background-color: rgb(6, 2, 15);
   opacity: 1;
   text-align: center;
   padding-top: 2%;
@@ -212,7 +212,7 @@ textarea {
   color: white;
   border-color: white;
   border-style: solid;
-  padding: 10px;
+  margin-top: 50px;
   opacity: .9;
   border-radius: 1px;
   border-right: 1px;
@@ -226,20 +226,27 @@ textarea {
   text-align: center;
   font-size: 30px;
   height: 20vh;
-  background-color: #1b1522;
+  background-color: rgb(6, 2, 15);
 }
 
 .kanban-card {
   padding: 20px;
   border-style: solid;
   border-radius: 3px;
-  border-color: slategrey;
+  border-color: black;
   border-width: 1px;
   opacity: 1 !important;
   background-color: #1b1522 !important;
   height: auto;
   width: auto;
   margin: 10px;
+}
+
+
+.kanban-card:hover {
+  border-radius: 20px;
+  border-color: slategray;
+
 }
 
 .nav-style {
@@ -284,16 +291,10 @@ hr {
   line-height:1.25em;
   border-bottom: 1px;
   text-align: center;
-  border-radius: 5px;
   border-color: slategray;
   border-style: solid;
 }
 
-.cardAuthor:hover {
-  border-radius: 10px;
-  border-color: white;
-
-}
 
 .btn {
   color: white !important;
@@ -315,7 +316,7 @@ hr {
 }
 
 #animate-area {
-  background-image: url("./static-content/bg.png");
+  background-image: url("./static-content/bg.jpg");
   background-position: 200px, 200px;
-  animation: animatedBackground 200s linear infinite;
+  animation: animatedBackground 800s linear infinite;
 }

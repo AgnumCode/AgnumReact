@@ -40,7 +40,7 @@ exports.title2 = () => {
 };
 
 exports.title3 = () => {
-  return `The quick brown fox jumps over the lazy dog.`;
+  return `The quick brown fox.`;
 };
 exports.title1 = () => {
   return `The Letter`;

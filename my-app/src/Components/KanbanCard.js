@@ -3,6 +3,7 @@ import CardComment from "./CardComment";
 
 export class KanbanCard extends Component {
 
+
   render() {
     return this.props.kanbancard.map((kanbancard, key) => (
       <div key={key} className="shadow p-3 mb-5 bg-white rounded kanban-card col-3">
@@ -15,11 +16,11 @@ export class KanbanCard extends Component {
               EDIT DESCRIPTION&nbsp;&nbsp;
               <i className="far fa-edit" />
             </button>
-            <button className="btn btn-sm btn-default">
+            <button onClick={this.props.onCardDelete} className="btn btn-sm btn-default">
               DELETE CARD&nbsp;&nbsp;
               <i className="fas fa-trash" />
             </button>
-            <button id="cardLike" type="like" className="btn btn-md btn-default">{kanbancard.score} &nbsp;<i className="far fa-thumbs-up" /></button>
+            <button  onClick={() => this.props.onCardLike(key)} className="btn btn-md btn-default">{kanbancard.score} &nbsp;<i className="far fa-thumbs-up" /></button>
 
           </div>
         </div>
