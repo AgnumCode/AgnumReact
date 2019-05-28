@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import KanbanCard from "./KanbanCard";
-import CreateCard from "./CreateCard";
+
 import text from "../static-content/text.js"
 const uuidv4 = require('uuid/v4');
 
@@ -11,40 +11,81 @@ export class Kanban extends Component {
     this.setState({
       cards: [{
         id: uuidv4(),
-        description: "Extra",
-        title: "text.title4()",
+        description: "Extra card",
+        title: "New card",
         author: "Nino K.",
         status: 'development',
         score: Math.floor(Math.random() * 100),
         comments: [
           {
             id: uuidv4(),
-            name: "",
-            date: "",
-            text: "",
-            score: 0,
-            subthreads: []
+            date: new Date().toLocaleDateString(),
+            text: "A created card comment.",
+            score: 0
           }
         ],
       }, ...this.state.cards]
     });
   }
 
-  onCardDelete = (item) => {
-    this.state.cards.splice(item, 1);
+  //cardKey, index of card
+  onCommentSubmit = (cardKey, text) => {
+    const cards = [...this.state.cards];
+    cards[cardKey] = {
+      ...cards[cardKey], comments: [{
+        id: uuidv4(),
+        date: new Date().toLocaleDateString(),
+        text: text,
+        score: 0
+      }, ...this.state.cards[cardKey].comments]
+    };
     this.setState({
-      cards: this.state.cards.filter(i => i !== item)
+      cards
+    })
+  }
+
+  //cardKey, index of card
+  onCardDelete = (cardKey) => {
+    this.state.cards.splice(cardKey, 1);
+    this.setState({
+      cards: this.state.cards.filter(i => i !== cardKey)
     });
   }
 
-  onCardLike = (key) => {
+  //cardKey, index of card
+  onCardLike = (cardKey) => {
     const cards = [...this.state.cards];
-    cards[key].score += 1;
+    cards[cardKey].score += 1;
     this.setState({
       cards
     });
   }
 
+  //cardKey, index of card
+  //cardKey, index of comment
+  onCommentLike = (cardKey, commentKey) => {
+    const cards = [...this.state.cards];
+    cards[cardKey].comments[commentKey].score += 1;
+    this.setState({
+      cards
+    });
+
+  }
+
+  //cardKey, index of card
+  //cardKey, index of comment
+  onCommentDelete = (cardKey, commentKey) => {
+    this.state.cards[cardKey].comments.splice(commentKey, 1);
+    this.setState({
+      cards: this.state.cards.filter(i => i.comments !== commentKey)
+    });
+
+  }
+
+  onChangeSearch = (e) => {
+    console.log(e.target.value);
+    // this.setState({searchText: e.target.value});
+  }
 
   render() {
     return (
@@ -71,18 +112,9 @@ export class Kanban extends Component {
 
                 <i className="far fa-plus-square" /> &nbsp;&nbsp;ADD CARD
         </button>
-              <button className="btn btn-info-outline btn-lg" id="boardChange" type="button">
-
-                <i className="fas fa-exchange-alt"></i> &nbsp;&nbsp;CHANGE BOARD
-        </button>
-
-              <button className="btn btn-info-outline btn-lg" type="button">
-                <i className="fas fa-question" />
-                &nbsp;&nbsp;MAINTAINER
-        </button>
               &nbsp;&nbsp;
         <form id="searchExpand">
-                <input type="search" /><i className="fas fa-chevron-down" /><span className="searchText"></span></form>
+                <input type="search" /><i className="fas fa-chevron-down" /><span className="searchText">SEARCH</span></form>
             </nav>
           </div>
         </div>
@@ -91,6 +123,9 @@ export class Kanban extends Component {
           <KanbanCard
             onCardDelete={this.onCardDelete.bind(this)}
             onCardLike={this.onCardLike.bind(this)}
+            onCommentLike={this.onCommentLike.bind(this)}
+            onCommentDelete={this.onCommentDelete.bind(this)}
+            onCommentSubmit={this.onCommentSubmit.bind(this)}
             key={this.state.cards.id}
             kanbancard={this.state.cards} />
         </div>
@@ -103,13 +138,12 @@ export class Kanban extends Component {
     )
   }
 
-
   constructor(props) {
     super(props)
 
     this.state = {
       id: 12309,
-      board: "Eric's Sprint #12313",
+      board: "Sprint #231",
       cards: [
         {
           id: uuidv4(),
@@ -121,26 +155,15 @@ export class Kanban extends Component {
           comments: [
             {
               id: uuidv4(),
-              name: "Phil",
               date: new Date().toLocaleDateString(),
               text: "exciting new information",
-              score: 0,
-              subthreads: [
-                {
-                  id: uuidv4(),
-                  name: "Lerry",
-                  text: "I don't know",
-                  score: 0
-                }
-              ]
+              score: 0
             },
             {
               id: uuidv4(),
-              name: "JK",
               date: new Date().toLocaleDateString(),
               text: "even better information",
-              score: 3,
-              subthreads: []
+              score: 3
             }
           ]
         },
@@ -154,11 +177,9 @@ export class Kanban extends Component {
           comments: [
             {
               id: uuidv4(),
-              name: "Pell",
               date: new Date().toLocaleDateString(),
               text: "needs more work",
-              score: 0,
-              subthreads: []
+              score: 0
             }
           ]
         },
@@ -172,11 +193,9 @@ export class Kanban extends Component {
           comments: [
             {
               id: uuidv4(),
-              name: "",
-              date: "",
-              text: "",
-              score: 0,
-              subthreads: []
+              date: new Date().toLocaleDateString(),
+              text: "Great Work",
+              score: 0
             }
           ],
         },
@@ -190,11 +209,9 @@ export class Kanban extends Component {
           comments: [
             {
               id: uuidv4(),
-              name: "",
-              date: "",
-              text: "",
-              score: 0,
-              subthreads: []
+              date: new Date().toLocaleDateString(),
+              text: "Keep it up.",
+              score: 0
             }
           ],
         },
@@ -208,11 +225,9 @@ export class Kanban extends Component {
           comments: [
             {
               id: uuidv4(),
-              name: "",
-              date: "",
-              text: "",
-              score: 0,
-              subthreads: []
+              date: new Date().toLocaleDateString(),
+              text: "Lorem Ipsum",
+              score: 0
             }
           ],
         },
@@ -226,16 +241,26 @@ export class Kanban extends Component {
           comments: [
             {
               id: uuidv4(),
-              name: "Pell",
               date: new Date().toLocaleDateString(),
               text: "needs more work",
-              score: 0,
-              subthreads: []
+              score: 0
+            },
+            {
+              id: uuidv4(),
+              date: new Date().toLocaleDateString(),
+              text: "updated",
+              score: 0
+            },
+            {
+              id: uuidv4(),
+              date: new Date().toLocaleDateString(),
+              text: "finished",
+              score: 0
             }
           ]
         }
       ]
-    };
+    }
   }
 }
 
