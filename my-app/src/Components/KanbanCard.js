@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardComment from "./CardComment";
 
+
 export class KanbanCard extends Component {
 
   state = {
@@ -8,12 +9,12 @@ export class KanbanCard extends Component {
   }
 
   commentSubmit = (e) => {
-    this.setState({ textInput: e.target.value})
+    this.setState({ textInput: e.target.value })
   }
 
   clearComment = () => {
     this.setState({
-      textInput : ''
+      textInput: ''
     })
   }
 
@@ -50,13 +51,13 @@ export class KanbanCard extends Component {
             <button onClick={() => this.props.onCommentSubmit(key, this.state.textInput)} type="button" className="comment-submit btn btn-md">SUBMIT</button>
             <button onClick={() => this.clearComment()} type="reset" className="comment-submit btn btn-md">CLEAR</button>
           </span>
-          </form>
+        </form>
 
-        <CardComment
-          key={kanbancard.comments.id}
-          onCommentLike={this.props.onCommentLike.bind(this, key)}
-          onCommentDelete={this.props.onCommentDelete.bind(this, key)}
-          comments={kanbancard.comments} />
+          <CardComment
+            key={kanbancard.comments.id}
+            onCommentLike={this.props.onCommentLike.bind(this, key)}
+            onCommentDelete={this.props.onCommentDelete.bind(this, key)}
+            comments={kanbancard.comments} />
       </div>
     ));
   }

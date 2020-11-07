@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Kanban from "./Components/Kanban";
 
-class App extends Component {
+
+class App extends React.Component {
 
   state = {
     id : 4031

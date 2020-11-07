@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import KanbanCard from "./KanbanCard";
+import text from "../static-content/text.js";
 
-import text from "../static-content/text.js"
+
 const uuidv4 = require('uuid/v4');
 
 export class Kanban extends Component {
-
 
   onCardAdd = () => {
     this.setState({
@@ -89,14 +89,17 @@ export class Kanban extends Component {
 
   render() {
     return (
+      
       <div id="animate-area" className="App">
         <header className="App-header">
-          AgnumCode = (<i className="fas fa-cogs"></i>) => Kanban
+            <span>
+          AgnumCode <i className="fas fa-cogs"></i> Kanban
+          </span>
         </header>
-
+        <div>
+        </div>
         <div className="container-fluid">
           <div className="row" />&nbsp;
-
         </div>
 
         <div className="container-fluid">
@@ -119,15 +122,15 @@ export class Kanban extends Component {
           </div>
         </div>
         <div className="row justify-content-center kanban-cards-style">
-
-          <KanbanCard
-            onCardDelete={this.onCardDelete.bind(this)}
-            onCardLike={this.onCardLike.bind(this)}
-            onCommentLike={this.onCommentLike.bind(this)}
-            onCommentDelete={this.onCommentDelete.bind(this)}
-            onCommentSubmit={this.onCommentSubmit.bind(this)}
-            key={this.state.cards.id}
-            kanbancard={this.state.cards} />
+          
+            <KanbanCard
+              onCardDelete={this.onCardDelete.bind(this)}
+              onCardLike={this.onCardLike.bind(this)}
+              onCommentLike={this.onCommentLike.bind(this)}
+              onCommentDelete={this.onCommentDelete.bind(this)}
+              onCommentSubmit={this.onCommentSubmit.bind(this)}
+              key={this.state.cards.id}
+              kanbancard={this.state.cards} />
         </div>
         <div className="container-fluid">
           <div className="kanban-bottom-2 row">

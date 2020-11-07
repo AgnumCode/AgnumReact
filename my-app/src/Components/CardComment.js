@@ -1,14 +1,18 @@
 import React, { Component } from "react";
+import Fade from "react-reveal";
+
+
 
 export class CardComment extends Component {
 
 
 
   render() {
-      if (Array(this.props.comments).length === 0){
+      if (Array(this.props.comment).length === 0){
         alert("EMPTY")
       } else
       return this.props.comments.map((comment, key) => (
+        <Fade distance="10px" bottom key={key}>
         <div key={key} className="comments">
           <div className="comments-style">
             <u>{comment.name}</u> {comment.date}
@@ -29,6 +33,7 @@ export class CardComment extends Component {
             </button>
           </div>
         </div>
+        </Fade>
       ));
   }
 }

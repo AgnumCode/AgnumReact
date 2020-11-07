@@ -131,7 +131,7 @@ input::-webkit-search-cancel-button {
   background-color: rgb(6, 2, 15);
   opacity: 1;
   text-align: center;
-  padding-top: 2%;
+  padding-top: 1%;
   height: 15vh;
   font-size: calc(30px + 2vmin);
   color: white;
